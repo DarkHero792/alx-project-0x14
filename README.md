@@ -148,4 +148,4 @@ Use fallback UI with a *Loading* and *Error* component.
 
 - Create reusable API utility functions with TypeScript typings
 
-For full API access and examples, visit: MoviesDatabase API on RapidAPI
+For full API access and examples, visit: [MoviesDatabase API on RapidAPI](https://rapidapi.com/SAdrian/api/moviesdatabase/)
