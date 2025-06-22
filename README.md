@@ -69,6 +69,7 @@ Headers:
 ```
 
 ### Sample Response
+```http
 {
   "results": [
     {
@@ -83,6 +84,7 @@ Headers:
   "next": 2,
   "entries": 5
 }
+```
 
 The root object often includes:
 
@@ -94,29 +96,56 @@ The root object often includes:
 All requests must include an API key passed via headers:
 
 Headers:
+
   X-RapidAPI-Key: YOUR_API_KEY
   X-RapidAPI-Host: moviesdatabase.p.rapidapi.com
+
 To protect your API key:
 
 - Store it in *.env.local*
 
 - Use server-side API routes in Next.js to proxy requests
 
-Error Handling
+## Error Handling
 
 Common error responses:
 
-401 Unauthorized – Missing or invalid API key
+**401 Unauthorized** – Missing or invalid API key
 
-403 Forbidden – Access to the resource is denied
+**403 Forbidden** – Access to the resource is denied
 
-429 Too Many Requests – Rate limit exceeded
+**429 Too Many Requests** – Rate limit exceeded
 
-500 Internal Server Error – API-side failure
+**500 Internal Server Error** – API-side failure
 
-Always wrap fetch calls in try/catch and check for response.ok:
+Always wrap fetch calls in *try/catch* and check for *response.ok*:
 
-
+```http
 if (!response.ok) throw new Error("API request failed");
+```
 
-Use fallback UI with a Loading and Error component.
+Use fallback UI with a *Loading* and *Error* component.
+
+## Usage Limits and Best Practices
+
+### Rate Limiting
+
+- Subject to RapidAPI's usage policies (based on your subscription tier)
+
+- Limit large requests using pagination (*limit*, *page*)
+
+- caching to avoid unnecessary repeated calls
+
+### Best Practices
+
+- Always use server-side fetching to keep API keys secure
+
+- Filter by year or genre to narrow result set
+
+- Use *info* query param to reduce response size
+
+- Handle missing/null fields gracefully (e.g., image or rating may be missing)
+
+- Create reusable API utility functions with TypeScript typings
+
+For full API access and examples, visit: MoviesDatabase API on RapidAPI
